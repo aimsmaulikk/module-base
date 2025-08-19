@@ -511,7 +511,7 @@ class Builder
     {
         $result = [];
         $configTabs = $this->configStructure->getTabs();
-        $config = $this->findResourceChildren($configTabs, 'Aimsinfosoft');
+        $config = $this->findResourceChildren($configTabs, 'aimsconfigtab');
 
         if ($config) {
             foreach ($config as $item) {
