@@ -68,7 +68,7 @@ class OctetResponseInterfaceFactory
     public function create(
         string $resourcePath,
         string $resourceType = OctetResponseInterface::FILE,
-        string $fileName = null
+        ?string $fileName = null
     ): OctetResponseInterface
     {
         if (!isset($this->responseFactoryAssociationMap[$resourceType])) {
