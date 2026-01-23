@@ -22,18 +22,21 @@
 
 namespace Aimsinfosoft\Base\Exceptions;
 
-class NonExistentImportBehavior extends \Magento\Framework\Exception\LocalizedException
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Phrase;
+
+class NonExistentImportBehavior extends LocalizedException
 {
     /**
-     * @param \Magento\Framework\Phrase $phrase
+     * @param Phrase|null $phrase
      * @param \Exception $cause
      * @param int $code
      */
-    public function __construct(\Magento\Framework\Phrase $phrase = null, \Exception $cause = null, $code = 0)
+    public function __construct(?Phrase $phrase = null, ?\Exception $cause = null, int $code = 0)
     {
         if (!$phrase) {
             $phrase = __('No such Import Behavior.');
         }
-        parent::__construct($phrase, $cause, (int) $code);
+        parent::__construct($phrase, $cause, $code);
     }
 }

@@ -22,19 +22,33 @@
 
 namespace Aimsinfosoft\Base\Debug\System;
 
-class AimsinfosoftFormatter extends \Monolog\Formatter\LineFormatter
+use Monolog\Formatter\LineFormatter;
+use Monolog\LogRecord;
+
+class AimsinfosoftFormatter extends LineFormatter
 {
     /**
-     * formate
-     * @param array $record
+     * format
      *
+     * @param LogRecord $record
      * @return string
      */
-    public function format(array $record): string
+    public function format(LogRecord $record): string
     {
         $output = $this->format;
-        $output = str_replace('%datetime%', date('H:i d/m/Y'), $output);
-        $output = str_replace('%message%', $record['message'], $output);
+
+        $output = str_replace(
+            '%datetime%',
+            $record->datetime->format('H:i d/m/Y'),
+            $output
+        );
+
+        $output = str_replace(
+            '%message%',
+            $record->message,
+            $output
+        );
+
         return $output;
     }
 }
