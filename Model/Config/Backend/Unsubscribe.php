@@ -46,8 +46,8 @@ class Unsubscribe extends \Magento\Framework\App\Config\Value implements
         \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList,
         \Aimsinfosoft\Base\Model\AdminNotification\Messages $messageManager,
         NotificationType $notificationType,
-        \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
-        \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
+        ?\Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
+        ?\Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = []
     ) {
         parent::__construct($context, $registry, $config, $cacheTypeList, $resource, $resourceCollection, $data);

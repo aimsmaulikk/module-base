@@ -106,8 +106,8 @@ abstract class AbstractImport extends AbstractEntity
         ProcessingErrorAggregatorInterface $errorAggregator,
         ResourceConnection $resource,
         array $data = [],
-        MagentoVersion $magentoVersion = null,
-        ImportCounter $importCounter = null
+        ?MagentoVersion $magentoVersion = null,
+        ?ImportCounter $importCounter = null
     )
     {
         if (empty($entityTypeCode)) {

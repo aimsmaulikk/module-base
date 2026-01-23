@@ -42,7 +42,7 @@ class SendSysInfo extends Command
      */
     public function __construct(
         CommandSendSysInfo $sendSysInfo,
-        string $name = null
+        ?string $name = null
     )
     {
         parent::__construct($name);
@@ -64,8 +64,9 @@ class SendSysInfo extends Command
      * @param OutputInterface $output
      * @return int|void
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->sendSysInfo->execute();
+        return Command::SUCCESS;
     }
 }
