@@ -2,8 +2,6 @@ name: Quality Checks
 
 on:
   pull_request:
-    branches:
-      - '**'
   push:
     branches:
       - main
@@ -14,16 +12,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
-
-      - name: Show PHP Version
-        run: php -v
+          tools: composer
 
       - name: Validate composer.json
         run: composer validate
+
+      - name: Install PHPCS
+        run: composer global require squizlabs/php_codesniffer
+
+      - name: Check PHPCS Version
+        run: ~/.composer/vendor/bin/phpcs --version || ~/.config/composer/vendor/bin/phpcs --version
