@@ -54,6 +54,10 @@ jobs:
       - name: Install QA Tools
         working-directory: tools
         run: composer install --no-interaction --prefer-dist
+      
+      - name: Verify Installed Standards
+        working-directory: tools
+        run: vendor/bin/phpcs -i 
 
       - name: Get Changed PHP Files
         id: changed-files

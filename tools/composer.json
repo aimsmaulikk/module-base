@@ -3,6 +3,12 @@
     "description": "CI Quality Tools",
     "require": {},
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.13"
+        "squizlabs/php_codesniffer": "^3.13",
+        "magento/magento-coding-standard": "^40.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }
