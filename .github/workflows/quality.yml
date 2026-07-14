@@ -2,20 +2,17 @@ name: Quality Checks
 
 on:
   pull_request:
-  push:
-    branches:
-      - main
-      - master
 
 jobs:
-  quality:
+  phpcs:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
           tools: composer
@@ -24,7 +21,24 @@ jobs:
         run: composer validate
 
       - name: Install PHPCS
-        run: composer global require squizlabs/php_codesniffer
+        run: |
+          mkdir tools
+          cd tools
+          composer require squizlabs/php_codesniffer --no-interaction
 
-      - name: Check PHPCS Version
-        run: ~/.composer/vendor/bin/phpcs --version || ~/.config/composer/vendor/bin/phpcs --version
+      - name: Get changed PHP files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+        with:
+          files: |
+            **/*.php
+
+      - name: Run PHPCS
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          echo "Changed PHP files:"
+          echo "${{ steps.changed-files.outputs.all_changed_files }}"
+
+          tools/vendor/bin/phpcs \
+            --standard=phpcs.xml \
+            ${{ steps.changed-files.outputs.all_changed_files }}
