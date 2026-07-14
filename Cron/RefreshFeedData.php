@@ -46,8 +46,7 @@ class RefreshFeedData
     public function __construct(
         Ads $adsFeed,
         Extensions $extensionsFeed
-    )
-    {
+    ) {
         $this->adsFeed = $adsFeed;
         $this->extensionsFeed = $extensionsFeed;
     }
@@ -55,7 +54,8 @@ class RefreshFeedData
     /**
      * Force reload feeds data
      */
-    public function execute(){
+    public function execute()
+    {
         $this->extensionsFeed->getFeed();
         $this->adsFeed->getFeed();
     }
