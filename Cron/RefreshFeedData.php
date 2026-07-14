@@ -55,8 +55,7 @@ class RefreshFeedData
     /**
      * Force reload feeds data
      */
-    public function execute()
-    {
+    public function execute(){
         $this->extensionsFeed->getFeed();
         $this->adsFeed->getFeed();
     }
