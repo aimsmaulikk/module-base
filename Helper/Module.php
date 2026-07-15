@@ -125,12 +125,12 @@ class Module
     }
 
     /**
-     * get feed module data
+     * validate link url
      * @deprecated since 1.10.2
-     * @see \Aimsinfosoft\Base\Model\Feed\ExtensionsProvider::getFeedModuleData()
+     * @see \Aimsinfosoft\Base\Model\LinkValidator::validate
      */
-    public function getFeedModuleData($moduleCode)
+    public function validateLink($link)
     {
-        return $this->extensionsProvider->getFeedModuleData($moduleCode);
+        return $this->linkValidator->validate($link);
     }
 }
