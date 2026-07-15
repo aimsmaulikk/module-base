@@ -125,12 +125,12 @@ class Module
     }
 
     /**
-     * get feed module data
+     * get all extension
      * @deprecated since 1.10.2
-     * @see \Aimsinfosoft\Base\Model\Feed\ExtensionsProvider::getFeedModuleData()
+     * @see \Aimsinfosoft\Base\Model\Feed\ExtensionsProvider::getAllFeedExtensions
      */
-    public function getFeedModuleData($moduleCode)
+    public function getAllExtensions()
     {
-        return $this->extensionsProvider->getFeedModuleData($moduleCode);
+        return $this->extensionsProvider->getAllFeedExtensions();
     }
 }
