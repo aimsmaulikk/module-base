@@ -1,0 +1,8 @@
+{
+    "name": "aimsinfosoft/ai-review",
+    "description": "AI Pull Request Reviewer",
+    "require": {
+        "openai-php/client": "^0.10",
+        "guzzlehttp/guzzle": "^7.9"
+    }
+}

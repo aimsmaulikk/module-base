@@ -54,10 +54,10 @@ jobs:
       - name: Install QA Tools
         working-directory: tools
         run: composer install --no-interaction --prefer-dist
-      
+
       - name: Verify Installed Standards
         working-directory: tools
-        run: vendor/bin/phpcs -i 
+        run: vendor/bin/phpcs -i
 
       - name: Get Changed PHP Files
         id: changed-files
@@ -75,3 +75,30 @@ jobs:
           tools/vendor/bin/phpcs \
             --standard=phpcs.xml \
             ${{ steps.changed-files.outputs.all_changed_files }}
+
+  ai-review:
+    name: AI Review
+    needs:
+      - validate
+      - phpcs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          tools: composer
+          coverage: none
+
+      - name: Install AI Review Dependencies
+        working-directory: ci
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run AI Review
+        run: php ci/review.php
