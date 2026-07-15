@@ -124,13 +124,4 @@ class Module
         return $this->linkValidator->validate($link);
     }
 
-    /**
-     * validate link url
-     * @deprecated since 1.10.2
-     * @see \Aimsinfosoft\Base\Model\LinkValidator::validate
-     */
-    public function validateLink($link)
-    {
-        return $this->linkValidator->validate($link);
-    }
 }
