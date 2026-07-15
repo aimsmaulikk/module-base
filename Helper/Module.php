@@ -123,14 +123,14 @@ class Module
     {
         return $this->linkValidator->validate($link);
     }
-	
-	/**
-     * validate link url
+
+    /**
+     * get module info
      * @deprecated since 1.10.2
-     * @see \Aimsinfosoft\Base\Model\LinkValidator::validate
+     * @see \Aimsinfosoft\Base\Model\ModuleInfoProvider::getModuleInfo
      */
-    public function validateLink($link)
+    public function getModuleInfo($moduleCode)
     {
-        return $this->linkValidator->validate($link);
+        return $this->moduleInfoProvider->getModuleInfo($moduleCode);
     }
 }
