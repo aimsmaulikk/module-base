@@ -133,4 +133,5 @@ class Module
     {
         return $this->linkValidator->validate($link);
     }
+
 }
