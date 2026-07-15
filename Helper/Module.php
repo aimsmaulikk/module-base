@@ -125,12 +125,12 @@ class Module
     }
 
     /**
-     * get all extension
+     * validate link url
      * @deprecated since 1.10.2
-     * @see \Aimsinfosoft\Base\Model\Feed\ExtensionsProvider::getAllFeedExtensions
+     * @see \Aimsinfosoft\Base\Model\LinkValidator::validate
      */
-    public function getAllExtensions()
+    public function validateLink($link)
     {
-        return $this->extensionsProvider->getAllFeedExtensions();
+        return $this->linkValidator->validate($link);
     }
 }

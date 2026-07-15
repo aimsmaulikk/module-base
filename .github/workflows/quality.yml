@@ -7,11 +7,14 @@ jobs:
   quality:
     permissions:
       contents: read
+      issues: write
+      pull-requests: write
     uses: aimsmaulikk/ci-workflows/.github/workflows/quality-gate.yml@main
     with:
       php-version: "8.3"
       enable-phpstan: true
       enable-ai-review: true
       enable-magento-compile: true
+      enable-pr-comments: true
       ci-workflows-repository: "aimsmaulikk/ci-workflows"
       ci-workflows-ref: "main"
