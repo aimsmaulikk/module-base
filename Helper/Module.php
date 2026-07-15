@@ -125,12 +125,12 @@ class Module
     }
 
     /**
-     * get module info
+     * get feed module data
      * @deprecated since 1.10.2
-     * @see \Aimsinfosoft\Base\Model\ModuleInfoProvider::getModuleInfo
+     * @see \Aimsinfosoft\Base\Model\Feed\ExtensionsProvider::getFeedModuleData()
      */
-    public function getModuleInfo($moduleCode)
+    public function getFeedModuleData($moduleCode)
     {
-        return $this->moduleInfoProvider->getModuleInfo($moduleCode);
+        return $this->extensionsProvider->getFeedModuleData($moduleCode);
     }
 }
