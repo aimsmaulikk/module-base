@@ -13,5 +13,6 @@ jobs:
       enable-phpstan: true
       enable-ai-review: true
       enable-magento-compile: true
+      enable-pr-comments: true
       ci-workflows-repository: "aimsmaulikk/ci-workflows"
       ci-workflows-ref: "main"
